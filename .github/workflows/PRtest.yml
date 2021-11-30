@@ -5,20 +5,16 @@ on:
     branches: [ main ] # master branch에 PR을 보낼 때 실행
  
 jobs:
-  test:
+  build:
+    name: Build and Run Tests
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
- 
-      - name: Set up JDK 15
-        uses: actions/setup-java@v1
+      - name: Checkout Code
+        uses: actions/checkout@v1
+      - name: Build and Run Tests
+        run: test/
+      - name: Publish Test Report
+        uses: mikepenz/action-junit-report@v2
+        if: always() # always run even if the previous step fails
         with:
-          java-version: 15
- 
-      # Gradle wrapper 파일 실행 권한주기
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
- 
-      # Gradle test를 실행한다
-      - name: Test with Gradle
-        run: ./gradlew --info test
+          report_paths: '**/build/test-results/test/TEST-*.xml'
