@@ -11,13 +11,13 @@ class mainTest {
 
     @BeforeEach
     void setUp() {
-        a = new main(1,2);
+        a = new main(3,2);
     }
 
     @Test
     @DisplayName("Get X TEST")
     void getX(){
-        assertEquals(1, a.getX());
+        assertEquals(3, a.getX());
     }
 
     @AfterEach

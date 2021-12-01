@@ -15,5 +15,6 @@ public class main {
         main a = new main(1,2);
         if(1 == 1) System.out.println("YES!");
         System.out.println("Github Action Test");
+        System.out.println("Maven");
     }
 }
