@@ -4,8 +4,8 @@
 name: Gradle Package
 
 on:
-  release:
-    types: [created]
+  pull_request:
+    branches: [ main ] # master branch에 PR을 보낼 때 실행
 
 jobs:
   build:
